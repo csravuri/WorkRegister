@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WorkRegister"
+             x:Class="WorkRegister.MainPage">
+
+    <TabbedPage.Children>
+        <ContentPage Title="Home">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Start"/>
+                    <Button Text="Stop"/>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Report">
+            
+        </ContentPage>
+    </TabbedPage.Children>
+
+</TabbedPage>
