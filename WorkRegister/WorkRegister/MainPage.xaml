@@ -2,19 +2,92 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WorkRegister"
-             x:Class="WorkRegister.MainPage">
+             x:Class="WorkRegister.MainPage"
+            Title="Work Register">
 
     <TabbedPage.Children>
-        <ContentPage Title="Home">
+        <ContentPage Title="Home🏠">
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Start"/>
-                    <Button Text="Stop"/>
+                <StackLayout HorizontalOptions="End">
+                    <Button Text="Settings" Clicked="OnSettingsClick"/>
                 </StackLayout>
+                
+                <StackLayout BackgroundColor="Orange">
+                    <StackLayout Orientation="Horizontal">                        
+                        <Button Text="Start" Clicked="OnStartClick" x:Name="btnWorkStart"/>
+                        <Button Text="Stop" Clicked="OnStopClick" x:Name="btnWorkStop"/>
+                    </StackLayout>
+                    <Grid>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Start"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="End"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="Duration"/>
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="lblWorkStartTime"/>
+                        <Label Grid.Row="1" Grid.Column="1" x:Name="lblWorkEndTime"/>
+                        <Label Grid.Row="1" Grid.Column="2" x:Name="lblWorkDuration"/>
+                    </Grid>
+                    <Label x:Name="lblWorkTimer"/>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="Yellow">
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Begin" Clicked="OnBeginClick" x:Name="btnBreakStart"/>
+                        <Button Text="End" Clicked="OnEndClick" x:Name="btnBreakStop"/>
+                    </StackLayout>
+                    <Label x:Name="lblBreakTimer"/>
+                </StackLayout>
+                
+
             </StackLayout>
         </ContentPage>
-        <ContentPage Title="Report">
-            
+        <ContentPage Title="Report📃">
+            <StackLayout>
+                <StackLayout HorizontalOptions="End">
+                    <Button Text="Settings" Clicked="OnSettingsClick"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="From"/>
+                        <DatePicker Format="dd-MMM-yyyy" x:Name="dpFromDate"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="To"/>
+                        <DatePicker Format="dd-MMM-yyyy" x:Name="dpToDate"/>
+                    </StackLayout>
+                    <Button Text="Search" Clicked="OnReportSearch"/>
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <Grid RowSpacing="5" ColumnSpacing="5" BackgroundColor="Orange" Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="2" Text="Date"/>
+                        <Label Grid.Row="0" Grid.Column="1" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="2" Text="Start"/>
+                        <Label Grid.Row="0" Grid.Column="2" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="2" Text="End"/>
+                        <Label Grid.Row="0" Grid.Column="3" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="3" Text="Duration"/>
+                        <Label Grid.Row="1" Grid.Column="3" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Work"/>
+                        <Label Grid.Row="1" Grid.Column="4" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Break"/>
+                        <Label Grid.Row="1" Grid.Column="5" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Total"/>                        
+                    </Grid>
+                    <ScrollView>
+                        <Grid x:Name="gridReportData" RowSpacing="5" ColumnSpacing="5" BackgroundColor="Orange" Padding="5,0,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>                            
+                        </Grid>
+                    </ScrollView>
+                </StackLayout>
+                
+            </StackLayout>
         </ContentPage>
     </TabbedPage.Children>
 
