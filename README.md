@@ -1,4 +1,8 @@
 # WorkRegister
 Log a daily task
 
-Settings page and Dark mode coming soon
+## coming soon:
+Settings page  
+Dark mode 
+Multiple breaks
+

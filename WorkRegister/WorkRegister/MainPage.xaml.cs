@@ -38,12 +38,13 @@ namespace WorkRegister
 
             if(workLog == null)
             {
+                lblWorkStartTime.Text = "";
                 workLog = new WorkLog();
                 WorkStopState();
             }
             else
             {
-
+                lblWorkStartTime.Text = workLog.StartTime?.ToString("hh:mm:ss");
                 WorkStartState();
             }
 
@@ -51,12 +52,13 @@ namespace WorkRegister
 
             if (breakLog == null)
             {
+                lblBreakStartTime.Text = "";
                 breakLog = new BreakLog();
                 BreakStopState();
             }
             else
             {
-
+                lblBreakStartTime.Text = breakLog.StartTime?.ToString("hh:mm:ss");
                 BreakStartState();
             }            
         }
@@ -67,6 +69,10 @@ namespace WorkRegister
         {
             workLog.WorkLogDate = DateTime.Today;
             workLog.StartTime = DateTime.Now;
+
+            lblWorkStartTime.Text = workLog.StartTime?.ToString("hh:mm:ss");
+            lblWorkEndTime.Text = "";
+            lblWorkDuration.Text = "";
 
             workLog.WorkLogID = await dbTransaction.InsertLog(workLog);
 
@@ -79,6 +85,7 @@ namespace WorkRegister
             workLog.EndTime = DateTime.Now;            
             dbTransaction.UpdateLog(workLog);
             TimeSpan timeDiff = (TimeSpan)(workLog.EndTime - workLog.StartTime);
+            lblWorkEndTime.Text = workLog.EndTime?.ToString("hh:mm:ss");
             lblWorkDuration.Text = $"{timeDiff.Hours}h {timeDiff.Minutes}m {timeDiff.Seconds}s";
 
             workLog = new WorkLog();
@@ -93,6 +100,10 @@ namespace WorkRegister
             breakLog.WorkLogID = workLog.WorkLogID;
             breakLog.StartTime = DateTime.Now;
 
+            lblBreakStartTime.Text = breakLog.StartTime?.ToString("hh:mm:ss");
+            lblBreakEndTime.Text = "";
+            lblBreakDuration.Text = "";
+
             await dbTransaction.InsertLog(breakLog);
 
 
@@ -106,7 +117,8 @@ namespace WorkRegister
             dbTransaction.UpdateLog(breakLog);
 
             TimeSpan timeDiff = (TimeSpan)(breakLog.EndTime - breakLog.StartTime);
-            lblBreakTimer.Text = $"{timeDiff.Hours}h {timeDiff.Minutes}m {timeDiff.Seconds}s";
+            lblBreakEndTime.Text = breakLog.EndTime?.ToString("hh:mm:ss");
+            lblBreakDuration.Text = $"{timeDiff.Hours}h {timeDiff.Minutes}m {timeDiff.Seconds}s";
 
             breakLog = new BreakLog();
 

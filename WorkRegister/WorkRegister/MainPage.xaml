@@ -11,7 +11,6 @@
                 <StackLayout HorizontalOptions="End">
                     <Button Text="Settings" Clicked="OnSettingsClick"/>
                 </StackLayout>
-                
                 <StackLayout BackgroundColor="Orange">
                     <StackLayout Orientation="Horizontal">                        
                         <Button Text="Start" Clicked="OnStartClick" x:Name="btnWorkStart"/>
@@ -25,7 +24,7 @@
                         <Label Grid.Row="1" Grid.Column="1" x:Name="lblWorkEndTime"/>
                         <Label Grid.Row="1" Grid.Column="2" x:Name="lblWorkDuration"/>
                     </Grid>
-                    <Label x:Name="lblWorkTimer"/>
+                    <!--<Label x:Name="lblWorkTimer"/>-->
                 </StackLayout>
 
                 <StackLayout BackgroundColor="Yellow">
@@ -33,7 +32,15 @@
                         <Button Text="Begin" Clicked="OnBeginClick" x:Name="btnBreakStart"/>
                         <Button Text="End" Clicked="OnEndClick" x:Name="btnBreakStop"/>
                     </StackLayout>
-                    <Label x:Name="lblBreakTimer"/>
+                    <Grid>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Start"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="End"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="Duration"/>
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="lblBreakStartTime"/>
+                        <Label Grid.Row="1" Grid.Column="1" x:Name="lblBreakEndTime"/>
+                        <Label Grid.Row="1" Grid.Column="2" x:Name="lblBreakDuration"/>
+                    </Grid>
+                    <!--<Label x:Name="lblBreakTimer"/>-->
                 </StackLayout>
                 
 
